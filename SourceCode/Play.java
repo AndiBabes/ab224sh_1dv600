@@ -8,33 +8,28 @@ import java.util.Scanner;
 public class Play
 {
 	private static String word = "testing";
-	private static boolean[] letters = new boolean[word.length()];
+	private static boolean[] letters;
 	private static int score;
-	private static int mistakes = 0;
+	private static int mistakes;
 
 	public Play()
 	{
-		try
-		{
-			Random rand = new Random();
-			int n = rand.nextInt(6);
-			File file = new File("WordList.txt");
-			Scanner scan = new Scanner(file);
-			for (int i = 0; i <= n; i++)
-				word = scan.nextLine();
-			letters = new boolean[word.length()];
-			scan.close();
-		} catch (IOException e)
-		{
-			e.printStackTrace();
-		}
+		mistakes=0;
+		letters = new boolean[word.length()];
+		/*
+		 * try { Random rand = new Random(); int n = rand.nextInt(6); File file = new
+		 * File("WordList.txt"); Scanner scan = new Scanner(file); for (int i = 0; i <=
+		 * n; i++) word = scan.nextLine(); letters = new boolean[word.length()];
+		 * scan.close(); } catch (IOException e) { e.printStackTrace(); }
+		 */		
 	}
 
 	public boolean stillPlaying()
 	{
-		for (int i = 0; i < letters.length; i++)
-			if (letters[i] == false)
-				return true;
+		if (mistakes < 6)
+			for (int i = 0; i < letters.length; i++)
+				if (letters[i] == false)
+					return true;
 		return false;
 
 	}
