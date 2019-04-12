@@ -38,6 +38,8 @@ public class GameMain extends Application
 		PGRoot.add(letter, 0, 2);
 		Button checkLetter = new Button("Check Letter");
 		PGRoot.add(checkLetter, 1, 2);
+		Button quitToMenu=new Button("Quit");
+		PGRoot.add(quitToMenu, 1, 3);
 		Scene playScene = new Scene(PGRoot, 640, 480);
 
 		VBox GORoot = new VBox();
@@ -53,6 +55,7 @@ public class GameMain extends Application
 		Label message = new Label();
 		GORoot.getChildren().addAll(message, gOBox);
 		Scene gameOver = new Scene(GORoot, 640, 480);
+		
 		playAgain.setOnAction(e->{
 			primaryStage.setScene(playScene);
 		});
@@ -78,6 +81,11 @@ public class GameMain extends Application
 		});
 		playButton.setOnAction(e -> {
 			primaryStage.setScene(playScene);
+		});
+		quitToMenu.setOnAction(e -> 
+		{
+			play.reset();
+			primaryStage.setScene(menuScene);
 		});
 
 		primaryStage.setScene(menuScene);
